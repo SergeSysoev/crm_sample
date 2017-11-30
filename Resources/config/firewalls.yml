@@ -1,0 +1,69 @@
+parameters:
+    main_firewalls: &main_firewalls
+        api_common_resources:
+            pattern: ^/api/crm/v1/common-resources$
+            security: false
+        api_client_registration:
+            pattern: ^/api/crm/v1/clients/registration$
+            security: false
+        api_client_reset_password_link:
+            pattern: ^/api/crm/v1/clients/reset-password-link$
+            security: false
+        api_clients_password_changed:
+            pattern: ^/api/crm/v1/clients/password-changed$
+            security: false
+        api_client_reset_password:
+            pattern: ^/api/crm/v1/clients/password$
+            methods: [PUT]
+            security: false
+        api_client_confirm_email:
+            pattern: ^/api/crm/v1/clients/confirm-email$
+            security: false
+        api_client_login:
+            pattern: ^/api/crm/v1/clients/login$
+            security: false
+        api_manager_login:
+            pattern: ^/api/admin/v1/managers/login$
+            security: false
+        api_token_list:
+            pattern: ^/api/admin/v1/token-values/list$
+            security: false
+        api_language_list:
+            pattern: ^/api/admin/v1/languages$
+            security: false
+        api_payment_callback_netpay:
+            pattern: ^/api/banking/v1/netpay-callback$
+            security: false
+        api_payment_callback_orangepay:
+            pattern: ^/api/banking/v1/orangepay-callback$
+            security: false
+        api_payment_callback_payboutique:
+            pattern: ^/api/banking/v1/payboutique-callback$
+            security: false
+        api_payment_stub:
+            pattern: ^/api/banking/v1/payboutique-stub$
+            security: false
+        api_payment_callback_payboutique_decline:
+            pattern: ^/api/banking/v1/payboutique-stub$
+            security: false
+        api_payment_pl_cb:
+            pattern: ^/api/banking/v1/pl-callback$
+            security: false
+        api_doc:
+            pattern: ^/api/doc
+            security: false
+        api_import_leads:
+            pattern: ^/api/crm/v1/leads$
+            methods: [POST]
+            security: false
+        api_open:
+            pattern: ^/api/open
+            security: false
+        api_secured:
+              pattern: ^/api
+              stateless: true
+              simple_preauth:
+                  authenticator: jwt_authenticator
+              provider: api_managers_provider
+              anonymous: true
+    firewalls: *main_firewalls
